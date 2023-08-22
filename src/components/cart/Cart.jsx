@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import burger1 from "../../assets/burger1.png";
 import burger2 from "../../assets/burger2.png";
-// import burger3 here
+import burger3 from "../../assets/burger3.png";
 
 const CartItem = ({ value, title, img, increment, decrement }) => (
   <div className="cartItem">
@@ -10,62 +10,77 @@ const CartItem = ({ value, title, img, increment, decrement }) => (
       <h4>{title}</h4>
       <img src={img} alt="Item" />
     </div>
-
     <div>
       <button onClick={decrement}>-</button>
-      <input type="number" readOnly value={value} />
+      <input type="" readOnly value={value} />
       <button onClick={increment}>+</button>
     </div>
   </div>
 );
 
 const Cart = () => {
-  const increment = (item) => {};
+  const [cartItems, setCartItems] = useState([
+    { id: 1, title: "Cheese Burger", img: burger1, value: 0 },
+    { id: 2, title: "Veg Cheese Burger", img: burger2, value: 0 },
+    { id: 3, title: "Cheese Burger avec Frites", img: burger3, value: 0 },
+  ]);
 
-  const decrement = (item) => {};
+  const increment = (itemId) => {
+    const updatedItems = cartItems.map((item) =>
+      item.id === itemId ? { ...item, value: item.value + 1 } : item
+    );
+    setCartItems(updatedItems);
+  };
+
+  const decrement = (itemId) => {
+    const updatedItems = cartItems.map((item) =>
+      item.id === itemId && item.value > 0 ? { ...item, value: item.value - 1 } : item
+    );
+    setCartItems(updatedItems);
+  };
+
+  const calculateSubtotal = () => {
+    return cartItems.reduce((total, item) => total + item.value * 2000, 0);
+  };
+
+  const calculateTotal = () => {
+    const subtotal = calculateSubtotal();
+    const tax = subtotal * 0.18;
+    const deliveryFee = 200;
+    return subtotal + tax + deliveryFee;
+  };
 
   return (
     <section className="cart">
       <main>
-        <CartItem
-          title={"Cheese Burger"}
-          img={burger1}
-          value={0}
-          increment={() => increment(1)}
-
-        // Add the function for decrementing the order by 1 
-       
-        />
-        <CartItem
-          title={"Veg Cheese Burger"}
-          img={burger2}
-          value={0}
-          increment={() => increment(2)}
-        // Add the function for decrementing the order by 2
-       
-        />
-
-        {/* Fill up the code for Cheese Burger similarly */}
-       
-
+        {cartItems.map((item) => (
+          <CartItem
+            key={item.id}
+            title={item.title}
+            img={item.img}
+            value={item.value}
+            increment={() => increment(item.id)}
+            decrement={() => decrement(item.id)}
+          />
+        ))}
         <article>
           <div>
-            <h4>Sub Total</h4>
-            <p>₹{2000}</p>
+            <h4>Sous-total</h4>
+            <p>${calculateSubtotal()}</p>
           </div>
           <div>
-            <h4>Tax</h4>
-            <p>₹{2000 * 0.18}</p>
+            <h4>TVA</h4>
+            <p>${(calculateSubtotal() * 0.18).toFixed(2)}</p>
           </div>
           <div>
-            <h4>Shipping Charges</h4>
-            <p>₹{200}</p>
+            <h4>Frais de livraison</h4>
+            <p>${200}</p>
           </div>{" "}
           <div>
             <h4>Total</h4>
-            <p>₹{2000 + 2000 * 0.18 + 200}</p>
+            <p>${calculateTotal().toFixed(2)}</p>
           </div>
-          <Link to="/shipping">Checkout</Link>
+          <Link to="/shipping">Payer</Link>
         </article>
       </main>
     </section>

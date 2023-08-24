@@ -12,7 +12,7 @@ const CartItem = ({ value, title, img, increment, decrement }) => (
     </div>
     <div>
       <button onClick={decrement}>-</button>
-      <input type="" readOnly value={value} />
+      <input type="text" readOnly value={value} />
       <button onClick={increment}>+</button>
     </div>
   </div>
@@ -20,9 +20,9 @@ const CartItem = ({ value, title, img, increment, decrement }) => (
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([
-    { id: 1, title: "Cheese Burger", img: burger1, value: 0 },
-    { id: 2, title: "Veg Cheese Burger", img: burger2, value: 0 },
-    { id: 3, title: "Cheese Burger avec Frites", img: burger3, value: 0 },
+    { id: 1, title: "Cheeseburger", img: burger1, value: 0, price: 200 },
+    { id: 2, title: "Cheeseburger Végan", img: burger2, value: 0, price: 300 },
+    { id: 3, title: "Cheeseburger avec Frites", img: burger3, value: 0, price: 1800 },
   ]);
 
   const increment = (itemId) => {
@@ -40,13 +40,13 @@ const Cart = () => {
   };
 
   const calculateSubtotal = () => {
-    return cartItems.reduce((total, item) => total + item.value * 2000, 0);
+    return cartItems.reduce((total, item) => total + item.value * item.price, 0);
   };
 
   const calculateTotal = () => {
     const subtotal = calculateSubtotal();
     const tax = subtotal * 0.18;
-    const deliveryFee = 200;
+    const deliveryFee = 15;
     return subtotal + tax + deliveryFee;
   };
 
@@ -66,19 +66,19 @@ const Cart = () => {
         <article>
           <div>
             <h4>Sous-total</h4>
-            <p>${calculateSubtotal()}</p>
+            <p>{calculateSubtotal()}€</p>
           </div>
           <div>
             <h4>TVA</h4>
-            <p>${(calculateSubtotal() * 0.18).toFixed(2)}</p>
+            <p>{(calculateSubtotal() * 0.18).toFixed(2)}€</p>
           </div>
           <div>
             <h4>Frais de livraison</h4>
-            <p>${200}</p>
+            <p>{15}€</p>
           </div>{" "}
           <div>
             <h4>Total</h4>
-            <p>${calculateTotal().toFixed(2)}</p>
+            <p>{calculateTotal().toFixed(2)}€</p>
           </div>
           <Link to="/shipping">Payer</Link>
         </article>

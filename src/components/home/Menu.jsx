@@ -15,7 +15,7 @@ itemNum={1
 }
 burgerSrc={burger1} 
 price={200} 
-title="Cheese Burger"
+title="Cheeseburger"
 handler={addToCartHandler
 } delay={0.1}
 />
@@ -24,8 +24,8 @@ itemNum={2
 }
 burgerSrc={burger2
 } price={500}
-title="Cheese Burger 
-vegane" delay={0.5} 
+title="Cheeseburger 
+végan" delay={0.5} 
 handler={addToCartHandler
 }
 />
@@ -34,7 +34,7 @@ itemNum={3
 }
 burgerSrc={burger3
 } price={1800}
-title="Cheese Burger avec frites" delay={0.8}
+title="Cheeseburger avec frites" delay={0.8}
 handler={addToCartHandler}
 />
 </div>

@@ -6,9 +6,10 @@ function DropdownMenu() {
 
   useEffect(() => {
     const navs = [
-      { name: "Login", path: "/login" },
-      {name:"Orders", path:"/myorders"},
-      {name:"Logout", path:"/login"}
+      { name: "Connexion", path: "/login" },
+      {name:"Mes commandes", path:"/myorders"},
+      {name:"Déconnexion", path:"/login"},
+      {name:"Mon profil", path:"/me"}
       
     ];
     setNavLinks(navs);

@@ -12,11 +12,11 @@ const MyOrders = () => {
         <table>
           <thead>
             <tr>
-              <th>Order Id</th>
-              <th>Status</th>
-              <th>Item Qty</th>
-              <th>Amount</th>
-              <th>Payment Method</th>
+              <th>Numéro de commande</th>
+              <th>Statut</th>
+              <th>Quantité</th>
+              <th>Montant</th>
+              <th>Mode de paiement</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -27,7 +27,7 @@ const MyOrders = () => {
             <td>#sdkfsdfdsf</td>
             <td>En cours de traitement</td>
             <td>23</td>
-            <td>${2132}</td>
+            <td>{2132}€</td>
             <td>CB</td>
             <td>
               <Link to={`/order/${"asdsds"}`}>

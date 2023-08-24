@@ -25,7 +25,7 @@ transition={{
 delay: 0.2,
 }}
 >
-Prennez le temps de vous offrir un savoureux burger.
+Prenez le temps de vous offrir un savoureux burger.
 </motion.p>
 </div>
 <motion.a 
@@ -42,7 +42,7 @@ transition={{
 delay: 0.4,
 }}
 >
-Explore Menu
+Consultez le Menu
 </motion.a>
 </section>
 <Menu />

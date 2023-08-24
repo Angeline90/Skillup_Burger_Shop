@@ -60,35 +60,35 @@ const OrderDetails = () => {
         <div>
           <h1>Montant</h1>
           <p>
-            <b>Sous-total</b>${2132}
+            <b>Sous-total</b>{2132}€
           </p>
           <p>
-            <b>Frais de livraison</b>${200}
+            <b>Frais de livraison</b>{200}€
           </p>
           <p>
-            <b>TVA</b>${232}
+            <b>TVA</b>{232}€
           </p>
           <p>
-            <b>Montant total</b>${232 + 200 + 2132}
+            <b>Montant total</b>{232 + 200 + 2132}€
           </p>
         </div>
 
         <article>
           <h1>Articles commandés</h1>
           <div>
-            <h4>Cheese Burger</h4>
+            <h4>Cheeseburger</h4>
             <div>
               <span>{12}</span> x <span>{232}</span>
             </div>
           </div>
           <div>
-            <h4>Cheese Burger Vegane</h4>
+            <h4>Cheeseburger Végan</h4>
             <div>
               <span>{10}</span> x <span>{500}</span>
             </div>
           </div>
           <div>
-            <h4>Burger avec frites</h4>
+            <h4>Cheeseburger avec frites</h4>
             <div>
               <span>{10}</span> x <span>{1800}</span>
             </div>

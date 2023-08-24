@@ -33,7 +33,7 @@ const Profile = () => {
             opacity: 1,
           }}
         >
-          <Link to="/myorders">Orders</Link>
+          <Link to="/myorders">Mes commandes</Link>
         </motion.div>
 
         <motion.button
@@ -49,7 +49,7 @@ const Profile = () => {
             delay: 0.3,
           }}
         >
-          Logout
+          <Link to="/">Déconnexion</Link>
         </motion.button>
       </main>
     </section>
